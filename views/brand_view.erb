@@ -5,12 +5,13 @@
       <% @brands.each() do |brand| %>
       <li><%= brand.name() %></li>
       <ul>
+        <li><em><%= brand.style() %></em></li>
         <li>$<%= brand.price() %>0</li>
       </ul>
       <% end %>
     </ul>
   <% else %>
-    <h3>No Brands Yet</h3>
+    <h3>Brands need to be added to the database.</h3>
   <% end %>
 </div>
 <p><a href="/">Home</a></p>

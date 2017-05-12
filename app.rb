@@ -50,9 +50,8 @@ patch('/stores/:id') do
 end
 
 patch('/stores/:id/brands') do
-
-  brand_ids = params.fetch('brand_ids', nil)
   @store = Store.find(params.fetch('id').to_i())
+  brand_ids = params.fetch('brand_ids', nil)
   if @store.update(:brand_ids => brand_ids)
     erb(:index)
   else
@@ -81,10 +80,11 @@ end
 post('/brands') do
   name = params.fetch('name')
   price = params.fetch('price')
-  @brand = Brand.new({:name => name, :price => price})
+  style = params.fetch('style')
+  @brand = Brand.new({:name => name, :style => style,:price => price})
   if @brand.save()
     erb(:index)
   else
-    erb(:store_error)
+    erb(:brand_error)
   end
 end

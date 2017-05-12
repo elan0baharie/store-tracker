@@ -1,10 +1,10 @@
 <div class="well">
-  <h5>To edit the information associated with <a href="/stores/<%= @store.id() %>/edit"><%= @store.name() %></a> just click it.</h5>
-  <% if @brands.any? %>
+  <h5>To edit the information associated with <strong><a href="/stores/<%= @store.id() %>/edit"><%= @store.name() %></a></strong> just click it.</h5>
+  <% if @store.brands.any? %>
     <h4>Brands at this branch:</h4>
     <ul>
       <% @store.brands.each() do |brand| %>
-      <li><%= brand.name() %></li>
+    <li><%= brand.name() %>, <em><%= brand.style() %></em></li>
       <% end %>
     </ul>
   <% else %>
@@ -13,12 +13,13 @@
   <form class="form-horizontal" action="/stores/<%= @store.id() %>/brands" method="post">
     <input type="hidden" name="_method" value="patch">
     <div class="form-group">
-         <label for="brand">Associate brands with <%= @store.name() %><:</label>
-         <br>
-         <% @brands.each()do |brand| %>
-         <label class="form-check-label"><%= brand.name()%><input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"></label>
-         <% end %>
-       </div>
-       <button class="btn btn-success" type="submit" name="button">Submit</button>
+      <label for="brand">Associate brands with <%= @store.name() %>:</label>
+       <br>
+        <% @brands.each()do |brand| %>
+          <label class="form-check-label"><%= brand.name()%><input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"></label>
+        <% end %>
+    </div>
+    <button class="btn btn-success" type="submit" name="button">Submit</button>
+    <a href="/"><button class="btn btn-danger" type="button" name="button">Submit None</button></a>
   </form>
 </div>
