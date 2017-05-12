@@ -1,0 +1,18 @@
+<% if @stores.any? %>
+<div class="well">
+  <h3>All stores:</h3>
+  <ul>
+    <% @stores.each() do |store| %>
+      <li><%= store.name() %></li>
+      <ul>
+        <li><%= store.address() %></li>
+      </ul>
+    <% end %>
+  </ul>
+</div>
+
+<% else %>
+  <h4>No stores yet</h4>
+<% end %>
+
+<p><a href="/">Home</a></p>

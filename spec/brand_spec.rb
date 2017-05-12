@@ -1,5 +1,5 @@
 require('spec_helper')
 
-describe(Class1) do
-  
+describe(Brand) do
+
 end
