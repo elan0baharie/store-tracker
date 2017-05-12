@@ -50,6 +50,7 @@ patch('/stores/:id') do
 end
 
 patch('/stores/:id/brands') do
+
   brand_ids = params.fetch('brand_ids', nil)
   @store = Store.find(params.fetch('id').to_i())
   if @store.update(:brand_ids => brand_ids)
