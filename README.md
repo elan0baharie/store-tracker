@@ -10,11 +10,10 @@ _This app is designed to retain some details about stores in Shoe Corps portfoli
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* _open command line interface and git clone from https://github.com/elan0baharie/store-tracker.git _
+* _open postgres in a new window_
+* _navigate to file folder shoe_store and run "ruby app.rb"_
+* _open localhost:4567 in web browser_
 
 ## Specifications
 
@@ -25,6 +24,7 @@ _This app is designed to retain some details about stores in Shoe Corps portfoli
 * _Create validation in both classes to ensure names are not blank in conjunction with corresponding error pages_
 * _Make callback on names to capitalize all words individually_
 * _Add front end functionality to associate brand with store using activerecord method_
+* _Make landings on error messages link to correct objects_
 
 
 ## Known Bugs
@@ -33,7 +33,7 @@ _Not yet._
 
 ## Support and contact details
 
-_E. Baharie email: 0elan1@gmail.com files on github.com _
+_E. Baharie email: 0elan1@gmail.com files on github.com https://github.com/elan0baharie/store-tracker.git _
 
 ## Technologies Used
 
