@@ -1,1 +1,16 @@
+<div class="well">
+  <% if @brands.any? %>
+    <h3>All Brands</h3>
+    <ul>
+      <% @brands.each() do |brand| %>
+      <li><%= brand.name() %></li>
+      <ul>
+        <li>$<%= brand.price() %>0</li>
+      </ul>
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>No Brands Yet</h3>
+  <% end %>
+</div>
 <p><a href="/">Home</a></p>
