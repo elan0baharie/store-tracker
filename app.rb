@@ -1,4 +1,5 @@
 require("bundler/setup")
+require('pry')
 Bundler.require(:default)
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
@@ -31,6 +32,7 @@ post('/stores') do
   name = params.fetch('name')
   address = params.fetch('address')
   @store = Store.new({:name => name, :address => address})
+  @store.capitalize_names
   if @store.save()
     erb(:index)
   else
@@ -68,6 +70,22 @@ delete('/stores/:id') do
   end
 end
 
+delete('/stores/:id/brands') do
+  store_id = params.fetch('id').to_i()
+  @store = Store.find(store_id)
+  brand_ids = (params[:brand_ids])
+  if brand_ids!= nil
+    brand_ids.each do |brand_id|
+      puts brand_id
+      brand_id.to_i
+      brand_to_delete = Brand.find(brand_id)
+      puts brand_to_delete
+      @store.brands.delete(brand_to_delete)
+    end
+  end
+  erb(:index)
+end
+
 get('/brands') do
   @brands = Brand.all()
   erb(:brand_view)
@@ -82,6 +100,7 @@ post('/brands') do
   price = params.fetch('price')
   style = params.fetch('style')
   @brand = Brand.new({:name => name, :style => style,:price => price})
+  @brand.capitalize_names
   if @brand.save()
     erb(:index)
   else

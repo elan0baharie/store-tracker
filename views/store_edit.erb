@@ -10,8 +10,27 @@
       <label for="address">Address change:</label>
       <input class="form-control" type="text" id="address" name="address">
     </div>
+
     <button class="btn btn-info" type="submit">Submit</button>
   </form>
+</div>
+
+<div class="well">
+  <form class="form-horizontal" action="/stores/<%=@store.id()%>/brands" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <div class="form-group">
+      <h3>Remove brands from <%= @store.name() %>.</h3>
+      <% if @store.brands.any? %>
+        <% @store.brands.each do |brand| %>
+          <label for="brand_ids[]"><%= brand.name %><input type="checkbox" id="brand_ids[]" name="brand_ids[]" value="<%= brand.id %>"></label>
+        <% end %>
+      <% else %>
+        <h3>No brands yet for <%= @store.name() %>.</h3>
+      <% end %>
+    </div>
+    <button class="btn btn-danger" type="submit" name="button">Remove Brand</button>
+  </form>
+
 </div>
 
 <div class="well">

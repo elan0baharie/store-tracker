@@ -1,5 +1,6 @@
+
 <div class="well">
-  <h5>To edit the information associated with <strong><a href="/stores/<%= @store.id() %>/edit"><%= @store.name() %></a></strong> just click it.</h5>
+  <h5>To edit the information associated with <strong><a href="/stores/<%= @store.id() %>/edit"><%= @store.name() %>,</a></strong> or to remove a brand just click it.</h5>
   <% if @store.brands.any? %>
     <h4>Brands at this branch:</h4>
     <ul>
@@ -13,10 +14,10 @@
   <form class="form-horizontal" action="/stores/<%= @store.id() %>/brands" method="post">
     <input type="hidden" name="_method" value="patch">
     <div class="form-group">
-      <label for="brand">Associate brands with <%= @store.name() %>:</label>
+      <h4>Associate brands with <%= @store.name() %>:</h4>
        <br>
-        <% @brands.each()do |brand| %>
-          <label class="form-check-label"><%= brand.name()%><input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"></label>
+        <% @store.resubmits_brands.each()do |brand| %>
+          <label for="brand_ids[]" class="form-check-label"><%= brand.name()%><input type="checkbox" id="brand_ids[]" name="brand_ids[]" value="<%= brand.id()%>"></label>
         <% end %>
     </div>
     <button class="btn btn-success" type="submit" name="button">Submit</button>
